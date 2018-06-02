@@ -1,0 +1,11 @@
+<resources>
+    <string name="app_name">CarroPipa</string>
+    <string name="username_or_email">Username or Email</string>
+    <string name="Password">Password</string>
+    <string name="app_title">Carro Pipa</string>
+    <string name="app_slogan">O jeito mais prático de repor água</string>
+    <string name="btn_entrar">Entrar</string>
+    <string name="campo_vazio">Este campo nao pode ser vazio!</string>
+    <string name="connection_failed">Falha na Conexão!</string>
+    <string name="userPass_failed">Usuário ou Senha invalido!</string>
+</resources>
