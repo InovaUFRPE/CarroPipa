@@ -5,8 +5,8 @@ import android.content.Intent;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.os.AsyncTask;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -16,7 +16,7 @@ import com.inova.ufrpe.processos.carropipa.R;
 import com.inova.ufrpe.processos.carropipa.infraestrutura.serverlayer.Conexao;
 import com.inova.ufrpe.processos.carropipa.infraestrutura.validadores.Validacao;
 
-public class LoginActivity extends AppCompatActivity {
+public class   LoginActivity extends AppCompatActivity {
 
     private Button btn_logar;
     private EditText edt_login;
@@ -37,6 +37,8 @@ public class LoginActivity extends AppCompatActivity {
         btn_logar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                //Intent autentication = new Intent(LoginActivity.this,M_MainActivity.class);
+                //startActivity(autentication);
                 //snippet para verificar o status da conexão
                 ConnectivityManager cm =
                         (ConnectivityManager)getSystemService(Context.CONNECTIVITY_SERVICE);
@@ -90,7 +92,7 @@ public class LoginActivity extends AppCompatActivity {
 
             if(resultado[0].contains("login_ok")){
                 //exibir toast apenas para verificar os dados q chegam do servidor
-                Intent autentication = new Intent(LoginActivity.this,MainActivity.class);
+                Intent autentication = new Intent(LoginActivity.this,M_MainActivity.class);
                 autentication.putExtra("nome",resultado[1]);
                 autentication.putExtra("snome",resultado[2]);
                 autentication.putExtra("email",resultado[3]);

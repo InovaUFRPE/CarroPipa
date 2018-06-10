@@ -4,8 +4,8 @@
     <color name="colorPrimaryDark">#00366B</color>
     <color name="colorPrimaryLight">#00BFFF</color>
     <color name="colorAccent">#FF5722</color>
-    <color name="colorSecundary">#999999</color>
-    <color name="colorSecundaryDark">#6B6B6B</color>
-    <color name="colorSecundaryLight">#CACACA</color>
+    <color name="colorSecundary">#565555</color>
+    <color name="colorSecundaryDark">#6b6b6b</color>
+    <color name="colorSecundaryLight">#8f8e8e</color>
     <color name="colorSecundaryAccent">#77BFFF</color>
 </resources>
