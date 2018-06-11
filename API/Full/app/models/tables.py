@@ -80,7 +80,6 @@ class Cliente(db.Model):
     def __repr__(self):
         return "<Cliente %r>" % self.id_pessoa
 
-'''
 class Caminhao(db.Model):
     __tablename__ = "caminhao"
 
@@ -101,6 +100,7 @@ class Caminhao(db.Model):
     def __repr__(self):
         return "<Caminhao %r>" % self.placa
 
+'''
 class Motorista(db.Model):
     __tablename__ = "motorista"
 

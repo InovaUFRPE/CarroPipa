@@ -2,7 +2,7 @@ from flask import render_template, jsonify, request
 from flask_sqlalchemy import SQLAlchemy, BaseQuery
 from app import app, db
 
-from app.models.tables import Usuario, Pessoa, Endereco, Empresa, Cliente#, Caminhao, Motorista, Pedido, Ranking, FormaPagto, Pagamento
+from app.models.tables import Usuario, Pessoa, Endereco, Empresa, Cliente, Caminhao#, Motorista, Pedido, Ranking, FormaPagto, Pagamento
 
 @app.route("/index/<user>")
 @app.route("/", defaults={'user': None})
@@ -146,6 +146,37 @@ def cliente_delete(id_pessoa):
 def cliente_get(id_pessoa):
     g = Cliente.query.get(id_pessoa)
     return "Cliente \"" + str(g.id_pessoa)
+
+'''----------------------------Caminhao--------------------------------'''
+
+@app.route("/caminhao/add/<placa>,<capacidade>,<modelo>,<id_pessoa_emp>")
+def caminhao_add(placa,capacidade,modelo,id_pessoa_emp):
+    i = Caminhao(placa,capacidade,modelo,id_pessoa_emp)
+    db.session.add(i)
+    db.session.commit()
+    return "Caminhao \"" + i.placa + "\" incluido com sucesso!"
+
+@app.route("/caminhao/delete/<id_caminhao>")
+def caminhao_delete(id_caminhao):
+    d = Caminhao.query.get(id_caminhao)
+    db.session.delete(d)
+    db.session.commit()
+    return "Caminhao \"" + d.placa + "\" excluído com sucesso!"
+
+@app.route("/caminhao/get/<id_caminhao>")
+def caminhao_get(id_caminhao):
+    g = Caminhao.query.get(id_caminhao)
+    return "Caminhao \"" + g.placa
+
+@app.route("/caminhao/update/<id_caminhao>,<placa>,<capacidade>,<modelo>,<id_pessoa_emp>")
+def caminhao_update(id_caminhao,placa,capacidade,modelo,id_pessoa_emp):
+    u = Caminhao.query.get(id_caminhao)
+    u.placa = placa
+    u.capacidade = capacidade
+    u.modelo = modelo
+    u.id_pessoa_emp = id_pessoa_emp
+    db.session.commit()
+    return "Caminhao \"" + u.placa + "\" alterado com sucesso!"
 
 
 #@app.route("/", methods=['GET', 'POST'])
