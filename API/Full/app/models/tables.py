@@ -162,7 +162,6 @@ class Ranking(db.Model):
     def __repr__(self):
         return "<Ranking %r>" % self.nota
 
-'''
 class FormaPagto(db.Model):
     __tablename__ = "formapagto"
 
@@ -175,6 +174,7 @@ class FormaPagto(db.Model):
     def __repr__(self):
         return "<FormaPagto %r>" % self.descricao
 
+'''
 class Pagamento(db.Model):
     __tablename__ = "pagamento"
 

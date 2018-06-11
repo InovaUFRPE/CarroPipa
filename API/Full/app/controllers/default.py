@@ -2,7 +2,7 @@ from flask import render_template, jsonify, request
 from flask_sqlalchemy import SQLAlchemy, BaseQuery
 from app import app, db
 
-from app.models.tables import Usuario, Pessoa, Endereco, Empresa, Cliente, Caminhao, Motorista, Pedido, Ranking#, FormaPagto, Pagamento
+from app.models.tables import Usuario, Pessoa, Endereco, Empresa, Cliente, Caminhao, Motorista, Pedido, Ranking, FormaPagto#, Pagamento
 
 @app.route("/index/<user>")
 @app.route("/", defaults={'user': None})
@@ -269,6 +269,34 @@ def ranking_update(id_pessoa_deu,id_pedido,nota,comentario):
     u.comentario = comentario
     db.session.commit()
     return "Ranking \"" + str(u.id_pessoa_deu) + "\" alterado com sucesso!"
+
+'''----------------------------FormaPagto--------------------------------'''
+
+@app.route("/formapagto/add/<descricao>")
+def formapagto_add(descricao):
+    i = FormaPagto(descricao)
+    db.session.add(i)
+    db.session.commit()
+    return "FormaPagto \"" + i.descricao + "\" incluido com sucesso!"
+
+@app.route("/formapagto/delete/<id_formapagto>")
+def formapagto_delete(id_formapagto):
+    d = FormaPagto.query.get(id_formapagto)
+    db.session.delete(d)
+    db.session.commit()
+    return "FormaPagto \"" + d.descricao + "\" excluído com sucesso!"
+
+@app.route("/formapagto/get/<id_formapagto>")
+def formapagto_get(id_formapagto):
+    g = FormaPagto.query.get(id_formapagto)
+    return "FormaPagto \"" + g.descricao
+
+@app.route("/formapagto/update/<id_formapagto>,<descricao>")
+def formapagto_update(id_formapagto,descricao):
+    u = FormaPagto.query.get(id_formapagto)
+    u.descricao = descricao
+    db.session.commit()
+    return "FormaPagto \"" + u.descricao + "\" alterado com sucesso!"
 
 #@app.route("/", methods=['GET', 'POST'])
 #def index():
