@@ -2,7 +2,7 @@ from flask import render_template, jsonify, request
 from flask_sqlalchemy import SQLAlchemy, BaseQuery
 from app import app, db
 
-from app.models.tables import Usuario, Pessoa, Endereco, Empresa, Cliente, Caminhao, Motorista#, Pedido, Ranking, FormaPagto, Pagamento
+from app.models.tables import Usuario, Pessoa, Endereco, Empresa, Cliente, Caminhao, Motorista, Pedido#, Ranking, FormaPagto, Pagamento
 
 @app.route("/index/<user>")
 @app.route("/", defaults={'user': None})
@@ -207,6 +207,39 @@ def motorista_update(id_pessoa,id_caminhao,id_pessoa_emp):
     db.session.commit()
     return "Motorista \"" + str(u.id_pessoa) + "\" alterado com sucesso!"
 
+'''----------------------------Pedido--------------------------------'''
+
+@app.route("/pedido/add/<id_pessoa_cli>,<id_pessoa_mot>,<valor>,<datahora>,<checkin>,<imediatoprogramado>,<confirmaprogramado>")
+def pedido_add(id_pessoa_cli,id_pessoa_mot,valor,datahora,checkin,imediatoprogramado,confirmaprogramado):
+    i = Pedido(id_pessoa_cli,id_pessoa_mot,valor,datahora,checkin,imediatoprogramado,confirmaprogramado)
+    db.session.add(i)
+    db.session.commit()
+    return "Pedido \"" + str(i.id_pedido) + "\" incluido com sucesso!"
+
+@app.route("/pedido/delete/<id_pedido>")
+def pedido_delete(id_pedido):
+    d = Pedido.query.get(id_pedido)
+    db.session.delete(d)
+    db.session.commit()
+    return "Pedido \"" + str(d.id_pedido) + "\" excluído com sucesso!"
+
+@app.route("/pedido/get/<id_pedido>")
+def pedido_get(id_pedido):
+    g = Pedido.query.get(id_pedido)
+    return "Pedido \"" + str(g.id_pedido)
+
+@app.route("/pedido/update/<id_pedido>,<id_pessoa_cli>,<id_pessoa_mot>,<valor>,<datahora>,<checkin>,<imediatoprogramado>,<confirmaprogramado>")
+def pedido_update(id_pedido,id_pessoa_cli,id_pessoa_mot,valor,datahora,checkin,imediatoprogramado,confirmaprogramado):
+    u = Pedido.query.get(id_pedido)
+    u.id_pessoa_cli = id_pessoa_cli
+    u.id_pessoa_mot = id_pessoa_mot
+    u.valor = valor
+    u.datahora = datahora
+    u.checkin = checkin
+    u.imediatoprogramado = imediatoprogramado
+    u.confirmaprogramado = confirmaprogramado
+    db.session.commit()
+    return "Pedido \"" + str(u.id_pedido) + "\" alterado com sucesso!"
 
 #@app.route("/", methods=['GET', 'POST'])
 #def index():

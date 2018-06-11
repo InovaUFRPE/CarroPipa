@@ -118,7 +118,6 @@ class Motorista(db.Model):
     def __repr__(self):
         return "<Motorista %r>" % self.id_pessoa
 
-'''
 class Pedido(db.Model):
     __tablename__ = "pedido"
 
@@ -146,6 +145,7 @@ class Pedido(db.Model):
     def __repr__(self):
         return "<Pedido %r>" % self.id_pessoa_cli
 
+'''
 class Ranking(db.Model):
     __tablename__ = "ranking"
 
