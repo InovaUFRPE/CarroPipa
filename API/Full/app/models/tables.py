@@ -145,7 +145,6 @@ class Pedido(db.Model):
     def __repr__(self):
         return "<Pedido %r>" % self.id_pessoa_cli
 
-'''
 class Ranking(db.Model):
     __tablename__ = "ranking"
 
@@ -163,6 +162,7 @@ class Ranking(db.Model):
     def __repr__(self):
         return "<Ranking %r>" % self.nota
 
+'''
 class FormaPagto(db.Model):
     __tablename__ = "formapagto"
 

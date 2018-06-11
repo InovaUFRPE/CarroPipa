@@ -2,7 +2,7 @@ from flask import render_template, jsonify, request
 from flask_sqlalchemy import SQLAlchemy, BaseQuery
 from app import app, db
 
-from app.models.tables import Usuario, Pessoa, Endereco, Empresa, Cliente, Caminhao, Motorista, Pedido#, Ranking, FormaPagto, Pagamento
+from app.models.tables import Usuario, Pessoa, Endereco, Empresa, Cliente, Caminhao, Motorista, Pedido, Ranking#, FormaPagto, Pagamento
 
 @app.route("/index/<user>")
 @app.route("/", defaults={'user': None})
@@ -240,6 +240,35 @@ def pedido_update(id_pedido,id_pessoa_cli,id_pessoa_mot,valor,datahora,checkin,i
     u.confirmaprogramado = confirmaprogramado
     db.session.commit()
     return "Pedido \"" + str(u.id_pedido) + "\" alterado com sucesso!"
+
+'''----------------------------Ranking--------------------------------'''
+
+@app.route("/ranking/add/<id_pessoa_deu>,<id_pedido>,<nota>,<comentario>")
+def ranking_add(id_pessoa_deu,id_pedido,nota,comentario):
+    i = Ranking(id_pessoa_deu,id_pedido,nota,comentario)
+    db.session.add(i)
+    db.session.commit()
+    return "Ranking \"" + str(i.id_pessoa_deu) + "\" incluido com sucesso!"
+
+@app.route("/ranking/delete/<id_pessoa_deu>")
+def ranking_delete(id_pessoa_deu):
+    d = Ranking.query.get(id_pessoa_deu)
+    db.session.delete(d)
+    db.session.commit()
+    return "Ranking \"" + str(d.id_pessoa_deu) + "\" excluído com sucesso!"
+
+@app.route("/ranking/get/<id_pessoa_deu>")
+def ranking_get(id_pessoa_deu):
+    g = Ranking.query.get(id_pessoa_deu)
+    return "Ranking \"" + str(g.id_pessoa_deu)
+
+@app.route("/ranking/update/<id_pessoa_deu>,<id_pedido>,<nota>,<comentario>")
+def ranking_update(id_pessoa_deu,id_pedido,nota,comentario):
+    u = Ranking.query.get(id_pessoa_deu)
+    u.nota = nota
+    u.comentario = comentario
+    db.session.commit()
+    return "Ranking \"" + str(u.id_pessoa_deu) + "\" alterado com sucesso!"
 
 #@app.route("/", methods=['GET', 'POST'])
 #def index():
