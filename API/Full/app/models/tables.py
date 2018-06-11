@@ -174,7 +174,6 @@ class FormaPagto(db.Model):
     def __repr__(self):
         return "<FormaPagto %r>" % self.descricao
 
-'''
 class Pagamento(db.Model):
     __tablename__ = "pagamento"
 
@@ -195,4 +194,3 @@ class Pagamento(db.Model):
 
     def __repr__(self):
         return "<Pagamento %r>" % self.valor
-'''

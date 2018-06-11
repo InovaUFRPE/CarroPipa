@@ -2,7 +2,7 @@ from flask import render_template, jsonify, request
 from flask_sqlalchemy import SQLAlchemy, BaseQuery
 from app import app, db
 
-from app.models.tables import Usuario, Pessoa, Endereco, Empresa, Cliente, Caminhao, Motorista, Pedido, Ranking, FormaPagto#, Pagamento
+from app.models.tables import Usuario, Pessoa, Endereco, Empresa, Cliente, Caminhao, Motorista, Pedido, Ranking, FormaPagto, Pagamento
 
 @app.route("/index/<user>")
 @app.route("/", defaults={'user': None})
@@ -297,6 +297,37 @@ def formapagto_update(id_formapagto,descricao):
     u.descricao = descricao
     db.session.commit()
     return "FormaPagto \"" + u.descricao + "\" alterado com sucesso!"
+
+'''----------------------------Pagamento--------------------------------'''
+
+@app.route("/pagamento/add/<id_formapagto>,<valor>,<id_pedido>,<datahora>")
+def pagamento_add(id_formapagto,valor,id_pedido,datahora):
+    i = Pagamento(id_formapagto,valor,id_pedido,datahora)
+    db.session.add(i)
+    db.session.commit()
+    return "Pagamento \"" + str(i.id_pagamento) + "\" incluido com sucesso!"
+
+@app.route("/pagamento/delete/<id_pagamento>")
+def pagamento_delete(id_pagamento):
+    d = Pagamento.query.get(id_pagamento)
+    db.session.delete(d)
+    db.session.commit()
+    return "Pagamento \"" + str(d.id_pagamento) + "\" excluído com sucesso!"
+
+@app.route("/pagamento/get/<id_pagamento>")
+def pagamento_get(id_pagamento):
+    g = Pagamento.query.get(id_pagamento)
+    return "Pagamento \"" + str(g.id_pagamento)
+
+@app.route("/pagamento/update/<id_pagamento>,<id_formapagto>,<valor>,<id_pedido>,<datahora>")
+def pagamento_update(id_pagamento,id_formapagto,valor,id_pedido,datahora):
+    u = Pagamento.query.get(id_pagamento)
+    u.id_formapagto = id_formapagto
+    u.valor = valor
+    u.id_pedido = id_pedido
+    u.datahora = datahora
+    db.session.commit()
+    return "Pagamento \"" + str(u.id_pagamento) + "\" alterado com sucesso!"
 
 #@app.route("/", methods=['GET', 'POST'])
 #def index():
