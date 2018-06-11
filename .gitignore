@@ -8,3 +8,6 @@
 /build
 /captures
 .externalNativeBuild
+__pycache__/
+venv/
+migrations/
