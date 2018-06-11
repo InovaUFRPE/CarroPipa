@@ -2,7 +2,7 @@ from flask import render_template, jsonify, request
 from flask_sqlalchemy import SQLAlchemy, BaseQuery
 from app import app, db
 
-from app.models.tables import Usuario, Pessoa, Endereco, Empresa, Cliente, Caminhao#, Motorista, Pedido, Ranking, FormaPagto, Pagamento
+from app.models.tables import Usuario, Pessoa, Endereco, Empresa, Cliente, Caminhao, Motorista#, Pedido, Ranking, FormaPagto, Pagamento
 
 @app.route("/index/<user>")
 @app.route("/", defaults={'user': None})
@@ -177,6 +177,35 @@ def caminhao_update(id_caminhao,placa,capacidade,modelo,id_pessoa_emp):
     u.id_pessoa_emp = id_pessoa_emp
     db.session.commit()
     return "Caminhao \"" + u.placa + "\" alterado com sucesso!"
+
+'''----------------------------Motorista--------------------------------'''
+
+@app.route("/motorista/add/<id_pessoa>,<id_caminhao>,<id_pessoa_emp>")
+def motorista_add(id_pessoa,id_caminhao,id_pessoa_emp):
+    i = Motorista(id_pessoa,id_caminhao,id_pessoa_emp)
+    db.session.add(i)
+    db.session.commit()
+    return "Motorista \"" + str(i.id_pessoa) + "\" incluido com sucesso!"
+
+@app.route("/motorista/delete/<id_pessoa>")
+def motorista_delete(id_pessoa):
+    d = Motorista.query.get(id_pessoa)
+    db.session.delete(d)
+    db.session.commit()
+    return "Motorista \"" + str(d.id_pessoa) + "\" excluído com sucesso!"
+
+@app.route("/motorista/get/<id_pessoa>")
+def motorista_get(id_pessoa):
+    g = Motorista.query.get(id_pessoa)
+    return "Motorista \"" + str(g.id_pessoa)
+
+@app.route("/motorista/update/<id_pessoa>,<id_caminhao>,<id_pessoa_emp>")
+def motorista_update(id_pessoa,id_caminhao,id_pessoa_emp):
+    u = Motorista.query.get(id_pessoa)
+    u.id_caminhao = id_caminhao
+    u.id_pessoa_emp = id_pessoa_emp
+    db.session.commit()
+    return "Motorista \"" + str(u.id_pessoa) + "\" alterado com sucesso!"
 
 
 #@app.route("/", methods=['GET', 'POST'])
