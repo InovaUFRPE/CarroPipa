@@ -4,7 +4,7 @@
             "outputFile": "C:\\Users\\vidal\\Desktop\\Inova\\CarroPipa\\app\\build\\intermediates\\incremental\\mergeDebugResources\\merged.dir\\values-v16\\values-v16.xml",
             "map": [
                 {
-                    "source": "C:\\Users\\vidal\\.gradle\\caches\\transforms-1\\files-1.1\\support-compat-27.1.1.aar\\2af4dcb67fd19b56f994303145016d69\\res\\values-v16\\values-v16.xml",
+                    "source": "C:\\Users\\vidal\\.gradle\\caches\\transforms-1\\files-1.1\\support-compat-27.1.1.aar\\72b7777912f2733387c9032e1da9ff6b\\res\\values-v16\\values-v16.xml",
                     "from": {
                         "startLines": "2",
                         "startColumns": "4",
@@ -14,7 +14,7 @@
                     }
                 },
                 {
-                    "source": "C:\\Users\\vidal\\.gradle\\caches\\transforms-1\\files-1.1\\appcompat-v7-27.1.1.aar\\7cd756bd305b4d33a49034491a8b923b\\res\\values-v16\\values-v16.xml",
+                    "source": "C:\\Users\\vidal\\.gradle\\caches\\transforms-1\\files-1.1\\appcompat-v7-27.1.1.aar\\f60ca84c0d7314b7f5491e0c8e0b3dbf\\res\\values-v16\\values-v16.xml",
                     "from": {
                         "startLines": "2",
                         "startColumns": "4",

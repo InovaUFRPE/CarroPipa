@@ -19,4 +19,5 @@
     <string name="title_activity_maps">Map</string>
     <string name="nome_usuario">Nome do Usuario</string>
     <string name="email_usuario">usuario@carropipa.com</string>
+    <string name="cadastration_failed">Falha ao Cadatrar</string>
 </resources>

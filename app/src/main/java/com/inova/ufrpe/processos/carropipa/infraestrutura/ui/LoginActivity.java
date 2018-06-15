@@ -37,8 +37,8 @@ public class   LoginActivity extends AppCompatActivity {
         btn_logar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent autentication = new Intent(LoginActivity.this,M_MainActivity.class);
-                startActivity(autentication);
+                //Intent autentication = new Intent(LoginActivity.this,M_MainActivity.class);
+                //startActivity(autentication);
                 //snippet para verificar o status da conexão
                 ConnectivityManager cm =
                         (ConnectivityManager)getSystemService(Context.CONNECTIVITY_SERVICE);
@@ -58,7 +58,7 @@ public class   LoginActivity extends AppCompatActivity {
                         Toast.makeText(LoginActivity.this, getString(R.string.campo_vazio), Toast.LENGTH_SHORT).show();
 
                     } else {
-                        url = "http://127.0.0.1:5000/login/logar";
+                        url = "http://10.246.1.121:5000/login/logar";
                         parametros = "email=" + emailUser +"&senha=" + senhaUser;
                         new SolicitaDados().execute(url);
                     }
@@ -93,10 +93,10 @@ public class   LoginActivity extends AppCompatActivity {
             if(resultado[0].contains("login_ok")){
                 //exibir toast apenas para verificar os dados q chegam do servidor
                 Intent autentication = new Intent(LoginActivity.this,M_MainActivity.class);
-                autentication.putExtra("nome",resultado[1]);
-                autentication.putExtra("snome",resultado[2]);
-                autentication.putExtra("email",resultado[3]);
-                autentication.putExtra("acesso",resultado[4]);
+                //autentication.putExtra("nome",resultado[1]);
+                //autentication.putExtra("snome",resultado[2]);
+                //autentication.putExtra("email",resultado[3]);
+                //autentication.putExtra("acesso",resultado[4]);
                 startActivity(autentication);
             }
             else {

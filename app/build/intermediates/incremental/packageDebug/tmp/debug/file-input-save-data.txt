@@ -1,7 +1,0 @@
-#Internal package file, do not edit.
-#Fri Jun 15 12:46:48 GMT-03:00 2018
-0.baseType=DIRECTORY
-0.base=C\:\\Users\\vidal\\Desktop\\Inova\\CarroPipa\\app\\build\\intermediates\\transforms\\dexMerger\\debug\\0
-0.path=classes.dex
-0.set=DEX
-count=1

@@ -1,5 +1,10 @@
 package com.inova.ufrpe.processos.carropipa.infraestrutura.ui;
 
+import android.content.Context;
+import android.content.Intent;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
+import android.os.AsyncTask;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Patterns;
@@ -9,6 +14,7 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 import com.inova.ufrpe.processos.carropipa.R;
+import com.inova.ufrpe.processos.carropipa.infraestrutura.serverlayer.Conexao;
 
 public class CriarContaUsuarioFinalActivity extends AppCompatActivity {
 
@@ -25,6 +31,9 @@ public class CriarContaUsuarioFinalActivity extends AppCompatActivity {
     private String senha;
 
     private Button btn_criar;
+
+    private String url = "";
+    private String parametros = "";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -49,6 +58,7 @@ public class CriarContaUsuarioFinalActivity extends AppCompatActivity {
 
     }
     private void verificarCampos() {
+
          nome = editNome.getText().toString().trim();
          sobrenome = editSobreNome.getText().toString().trim();
          celular = editTelefone.getText().toString().trim();
@@ -78,11 +88,24 @@ public class CriarContaUsuarioFinalActivity extends AppCompatActivity {
             editSobreNome.setError("sobrenome inválido");
 
         } else if (validarNumero( celular )) {
-            editSobreNome.setError("Telefone inválido");
+            editTelefone.setError("Telefone inválido");
 
         } else {
-            //Função para criar a Conta
-            finish();
+            // Criar com API
+            ConnectivityManager cm =
+                    (ConnectivityManager)getSystemService(Context.CONNECTIVITY_SERVICE);
+            //aqui pode gerar exception??
+            NetworkInfo activeNetwork = cm.getActiveNetworkInfo();
+            boolean isConnected = activeNetwork != null &&
+                    activeNetwork.isConnectedOrConnecting();
+            if (isConnected){
+
+                url = "http://10.246.1.121:5000/cadastro/cadastrar";
+                parametros = "email=" + email +"&senha=" + senha +"&celular=" + celular +"&sobrenome=" + sobrenome +"&nome=" + nome;
+                new SolicitaDados().execute(url);
+
+            }
+            else{ Toast.makeText(CriarContaUsuarioFinalActivity.this, getString(R.string.connection_failed), Toast.LENGTH_SHORT).show(); }
         }
 
     }
@@ -103,4 +126,33 @@ public class CriarContaUsuarioFinalActivity extends AppCompatActivity {
         return numero.matches("^[0-9]{0,5}+$");
     }
 
+    /*
+Usa asyncTasks!
+A classe interna a seguir conecta a internet e envia informações em segundo plano
+ */
+    private class SolicitaDados extends AsyncTask<String, Void, String> {
+
+        @Override
+        protected String doInBackground(String... url) {
+
+            return Conexao.postDados(url[0], parametros);
+        }
+
+        //exibe os resultados
+        @Override
+        protected void onPostExecute(String results){
+
+            //Criado para tratar a nova String vinda do Servidor;
+
+            String[] resultado = results.split(", ");
+
+            if(resultado[0].contains("login_ok")) {
+                finish();
+            }
+            else{
+                Toast.makeText(CriarContaUsuarioFinalActivity.this, getString(R.string.cadastration_failed), Toast.LENGTH_SHORT).show();
+                // Falha no cadatros!! @TODO tratar erro, para exibir ao Usuário
+            }
+        }
+    }
 }
