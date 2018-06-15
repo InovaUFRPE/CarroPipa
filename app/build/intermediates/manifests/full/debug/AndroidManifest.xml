@@ -29,7 +29,6 @@
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:testOnly="true"
         android:theme="@style/AppTheme" >
         <activity android:name="com.inova.ufrpe.processos.carropipa.infraestrutura.ui.ApresentActivity" >
             <intent-filter>
@@ -46,7 +45,7 @@
             android:name="com.inova.ufrpe.processos.carropipa.infraestrutura.ui.M_MainActivity"
             android:label="@string/title_activity_m__main"
             android:theme="@style/AppTheme.NoActionBar" />
-        <activity android:name="com.inova.ufrpe.processos.carropipa.infraestrutura.ui.CriarContaActivity" />
+        <activity android:name="com.inova.ufrpe.processos.carropipa.infraestrutura.ui.CriarContaUsuarioFinalActivity" />
         <!--
              The API key for Google Maps-based APIs is defined as a string resource.
              (See the file "res/values/google_maps_api.xml").

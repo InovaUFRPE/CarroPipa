@@ -33,7 +33,7 @@
             android:name=".infraestrutura.ui.M_MainActivity"
             android:label="@string/title_activity_m__main"
             android:theme="@style/AppTheme.NoActionBar" />
-        <activity android:name=".infraestrutura.ui.CriarContaActivity" />
+        <activity android:name=".infraestrutura.ui.CriarContaUsuarioFinalActivity" />
         <!--
              The API key for Google Maps-based APIs is defined as a string resource.
              (See the file "res/values/google_maps_api.xml").

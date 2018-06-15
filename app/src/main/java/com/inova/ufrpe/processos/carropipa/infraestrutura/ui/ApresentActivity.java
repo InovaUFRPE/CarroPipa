@@ -5,7 +5,6 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
-import android.widget.Toast;
 
 import com.inova.ufrpe.processos.carropipa.R;
 
@@ -30,7 +29,7 @@ public class ApresentActivity extends AppCompatActivity {
         btn_Criar.setOnClickListener( new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(ApresentActivity.this,CriarContaActivity.class));
+                startActivity(new Intent(ApresentActivity.this,CriarContaUsuarioFinalActivity.class));
 
             }
         } );

@@ -82,17 +82,15 @@ public class M_MainActivity extends AppCompatActivity implements NavigationView.
         // Handle navigation view item clicks here.
         int id = item.getItemId();
 
-        if (id == R.id.nav_camera) {
+        if (id == R.id.nav_pedir) {
             // Handle the camera action
-        } else if (id == R.id.nav_gallery) {
+        } else if (id == R.id.nav_pagamento) {
 
-        } else if (id == R.id.nav_slideshow) {
+        } else if (id == R.id.nav_ajuda) {
 
-        } else if (id == R.id.nav_manage) {
+        } else if (id == R.id.nav_sobre) {
 
-        } else if (id == R.id.nav_share) {
-
-        } else if (id == R.id.nav_send) {
+        } else if (id == R.id.nav_sair) {
 
         }
 
