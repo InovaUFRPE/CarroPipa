@@ -20,7 +20,7 @@
 
     </android.support.design.widget.AppBarLayout>
     //AQUI CHAMA o MAPA  NO LUGAR DO CONTENT
-    <include layout="@layout/activity_home_maps" />
+    <include layout="@layout/content_m__main" />
 
     <android.support.design.widget.FloatingActionButton
         android:id="@+id/fab"
