@@ -58,6 +58,7 @@ public class   LoginActivity extends AppCompatActivity {
                         Toast.makeText(LoginActivity.this, getString(R.string.campo_vazio), Toast.LENGTH_SHORT).show();
 
                     } else {
+                        //TODO IP para connected.
                         url = "http://10.246.1.121:5000/login/logar";
                         parametros = "email=" + emailUser +"&senha=" + senhaUser;
                         new SolicitaDados().execute(url);
