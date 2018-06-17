@@ -6,6 +6,7 @@ import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
@@ -46,12 +47,15 @@ public class   LoginActivity extends AppCompatActivity {
                 NetworkInfo activeNetwork = cm.getActiveNetworkInfo();
                 boolean isConnected = activeNetwork != null &&
                         activeNetwork.isConnectedOrConnecting();
+                //isConnected = false;
                 if (isConnected){
 
                     String emailUser = edt_login.getText().toString();
                     String senhaUser = edt_senha.getText().toString();
 
                     if(emailUser.isEmpty() || senhaUser.isEmpty()){
+                        edt_login.setError("CAMPO VAZIO");
+                        edt_senha.setError( "CAMPO VAZIO" );
                         Toast.makeText(LoginActivity.this, getString(R.string.campo_vazio), Toast.LENGTH_SHORT).show();
 
                     } else if (new Validacao().validarEmail(emailUser)) {
@@ -65,7 +69,8 @@ public class   LoginActivity extends AppCompatActivity {
                     }
                 }
                 else{
-                    Toast.makeText(LoginActivity.this, getString(R.string.connection_failed), Toast.LENGTH_SHORT).show();
+                    Snackbar.make(v, R.string.connection_failed, Snackbar.LENGTH_LONG ).show();
+                   // Toast.makeText(LoginActivity.this, getString(R.string.connection_failed), Toast.LENGTH_SHORT).show();
                 }
             }
         });
