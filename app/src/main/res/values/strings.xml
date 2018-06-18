@@ -20,4 +20,13 @@
     <string name="nome_usuario">Nome do Usuario</string>
     <string name="email_usuario">usuario@carropipa.com</string>
     <string name="cadastration_failed">Falha ao Cadatrar</string>
+    <string name="take_a_picture">Tire uma foto</string>
+    <string name="edt_complemento">Complemento</string>
+    <string name="edt_bairro">Bairro</string>
+    <string name="edt_cidade">Cidade</string>
+    <string name="edt_cep">CEP</string>
+    <string name="edt_lograduro">Logradouro</string>
+    <string name="btn_limpar">LIMPAR</string>
+    <string name="btn_enviar">ENVIAR</string>
+    <string name="edt_cpf">CPF</string>
 </resources>
