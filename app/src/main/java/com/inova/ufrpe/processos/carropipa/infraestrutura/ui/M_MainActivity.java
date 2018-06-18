@@ -1,8 +1,9 @@
 package com.inova.ufrpe.processos.carropipa.infraestrutura.ui;
 
+import android.app.FragmentManager;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
 import android.view.View;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
@@ -17,19 +18,23 @@ import com.inova.ufrpe.processos.carropipa.R;
 
 public class M_MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate( savedInstanceState );
         setContentView( R.layout.activity_m__main );
         Toolbar toolbar = (Toolbar) findViewById( R.id.toolbar );
         setSupportActionBar( toolbar );
-
+        // BOTÃO DA POSIÇÃO NO MAPA
         FloatingActionButton fab = (FloatingActionButton) findViewById( R.id.fab );
         fab.setOnClickListener( new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Snackbar.make( view, "Replace with your own action", Snackbar.LENGTH_LONG )
-                        .setAction( "Action", null ).show();
+               // chama o mapa
+                FragmentManager fm = getFragmentManager();
+                fm.beginTransaction().replace( R.id.context_frame, new HomeMapsActivity() ).commit();
+               // Snackbar.make( view, "Replace with your own action", Snackbar.LENGTH_LONG )
+               //         .setAction( "Action", null ).show();
 
             }
         } );
@@ -70,6 +75,10 @@ public class M_MainActivity extends AppCompatActivity implements NavigationView.
 
         //noinspection SimplifiableIfStatement
         if (id == R.id.action_settings) {
+            Intent perfilAct= new Intent(M_MainActivity.this,PerfilActivity.class);
+            startActivity(perfilAct);
+
+
             return true;
         }
 
@@ -82,8 +91,12 @@ public class M_MainActivity extends AppCompatActivity implements NavigationView.
         // Handle navigation view item clicks here.
         int id = item.getItemId();
 
-        if (id == R.id.nav_pedir) {
-            // Handle the camera action
+        if (id == R.id.nav_perfil) {
+            Intent perfilAct= new Intent(M_MainActivity.this,PerfilActivity.class);
+            startActivity(perfilAct);
+        } else if (id == R.id.nav_pedir) {
+            Intent solicitarAct= new Intent(M_MainActivity.this,SolicitarActivity.class);
+            startActivity(solicitarAct);
         } else if (id == R.id.nav_pagamento) {
 
         } else if (id == R.id.nav_ajuda) {
@@ -91,6 +104,7 @@ public class M_MainActivity extends AppCompatActivity implements NavigationView.
         } else if (id == R.id.nav_sobre) {
 
         } else if (id == R.id.nav_sair) {
+            finish();
 
         }
 

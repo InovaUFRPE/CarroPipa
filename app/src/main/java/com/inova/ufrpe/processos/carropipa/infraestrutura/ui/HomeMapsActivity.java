@@ -1,31 +1,37 @@
 package com.inova.ufrpe.processos.carropipa.infraestrutura.ui;
 
-import android.support.v4.app.FragmentActivity;
+import android.app.Fragment;
+import android.support.annotation.Nullable;
 import android.os.Bundle;
+
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
 
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
+import com.google.android.gms.maps.MapFragment;
 import com.google.android.gms.maps.OnMapReadyCallback;
-import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MarkerOptions;
 import com.inova.ufrpe.processos.carropipa.R;
 
-public class HomeMapsActivity extends FragmentActivity implements OnMapReadyCallback {
+public class HomeMapsActivity extends Fragment implements OnMapReadyCallback {
 
     private GoogleMap mMap;
-
+    @Nullable
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate( savedInstanceState );
-        setContentView( R.layout.activity_home_maps );
-        // Obtain the SupportMapFragment and get notified when the map is ready to be used.
-        SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager()
-                .findFragmentById( R.id.map );
-        mapFragment.getMapAsync( this );
+    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState){
+        return inflater.inflate( R.layout.activity_home_maps,container,false );
     }
 
-
+    @Override
+    public void onViewCreated(View view, Bundle savedInstanceState){
+        super.onViewCreated( view,savedInstanceState );
+        MapFragment fragment;
+        fragment =(MapFragment)getChildFragmentManager().findFragmentById( R.id.map_home );
+        fragment.getMapAsync( this );
+    }
     /**
      * Manipulates the map once available.
      * This callback is triggered when the map is ready to be used.
@@ -40,8 +46,8 @@ public class HomeMapsActivity extends FragmentActivity implements OnMapReadyCall
         mMap = googleMap;
 
         // Add a marker in Sydney and move the camera
-        LatLng sydney = new LatLng( -34, 151 );
-        mMap.addMarker( new MarkerOptions().position( sydney ).title( "Marker in Sydney" ) );
-        mMap.moveCamera( CameraUpdateFactory.newLatLng( sydney ) );
+        LatLng sydney = new LatLng( -8.0176527, -34.9465626 );
+        mMap.moveCamera( CameraUpdateFactory.newLatLngZoom( sydney,14.0f ) );
+        mMap.addMarker( new MarkerOptions().position( sydney ).title( "Local Atual " ));
     }
 }

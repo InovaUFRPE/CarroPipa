@@ -412,6 +412,10 @@
         "source": "C:\\Users\\vidal\\.gradle\\caches\\transforms-1\\files-1.1\\design-27.1.1.aar\\c773db953f233c411891e1bf2388f46e\\res\\drawable\\navigation_empty_icon.xml"
     },
     {
+        "merged": "C:\\Users\\vidal\\Desktop\\Inova\\CarroPipa\\app\\build\\intermediates\\res\\merged\\debug\\drawable_botao_redondo_contorno.xml.flat",
+        "source": "C:\\Users\\vidal\\Desktop\\Inova\\CarroPipa\\app\\src\\main\\res\\drawable\\botao_redondo_contorno.xml"
+    },
+    {
         "merged": "C:\\Users\\vidal\\Desktop\\Inova\\CarroPipa\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xxhdpi-v4_abc_textfield_activated_mtrl_alpha.9.png.flat",
         "source": "C:\\Users\\vidal\\.gradle\\caches\\transforms-1\\files-1.1\\appcompat-v7-27.1.1.aar\\f60ca84c0d7314b7f5491e0c8e0b3dbf\\res\\drawable-xxhdpi-v4\\abc_textfield_activated_mtrl_alpha.9.png"
     },
@@ -458,6 +462,10 @@
     {
         "merged": "C:\\Users\\vidal\\Desktop\\Inova\\CarroPipa\\app\\build\\intermediates\\res\\merged\\debug\\layout_abc_screen_content_include.xml.flat",
         "source": "C:\\Users\\vidal\\.gradle\\caches\\transforms-1\\files-1.1\\appcompat-v7-27.1.1.aar\\f60ca84c0d7314b7f5491e0c8e0b3dbf\\res\\layout\\abc_screen_content_include.xml"
+    },
+    {
+        "merged": "C:\\Users\\vidal\\Desktop\\Inova\\CarroPipa\\app\\build\\intermediates\\res\\merged\\debug\\layout_activity_solicitar.xml.flat",
+        "source": "C:\\Users\\vidal\\Desktop\\Inova\\CarroPipa\\app\\src\\main\\res\\layout\\activity_solicitar.xml"
     },
     {
         "merged": "C:\\Users\\vidal\\Desktop\\Inova\\CarroPipa\\app\\build\\intermediates\\res\\merged\\debug\\layout_abc_alert_dialog_title_material.xml.flat",
@@ -810,6 +818,10 @@
     {
         "merged": "C:\\Users\\vidal\\Desktop\\Inova\\CarroPipa\\app\\build\\intermediates\\res\\merged\\debug\\layout_design_layout_tab_text.xml.flat",
         "source": "C:\\Users\\vidal\\.gradle\\caches\\transforms-1\\files-1.1\\design-27.1.1.aar\\c773db953f233c411891e1bf2388f46e\\res\\layout\\design_layout_tab_text.xml"
+    },
+    {
+        "merged": "C:\\Users\\vidal\\Desktop\\Inova\\CarroPipa\\app\\build\\intermediates\\res\\merged\\debug\\layout_activity_perfil.xml.flat",
+        "source": "C:\\Users\\vidal\\Desktop\\Inova\\CarroPipa\\app\\src\\main\\res\\layout\\activity_perfil.xml"
     },
     {
         "merged": "C:\\Users\\vidal\\Desktop\\Inova\\CarroPipa\\app\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi-v4_abc_ic_menu_cut_mtrl_alpha.png.flat",
