@@ -1,12 +1,11 @@
-package com.inova.ufrpe.processos.carropipa.infraestrutura.ui;
+package com.inova.ufrpe.processos.carropipa.motorista.ui;
 
 import android.content.Context;
-import android.content.Intent;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.os.AsyncTask;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.util.Patterns;
 import android.view.View;
 import android.widget.Button;
@@ -16,7 +15,7 @@ import android.widget.Toast;
 import com.inova.ufrpe.processos.carropipa.R;
 import com.inova.ufrpe.processos.carropipa.infraestrutura.serverlayer.Conexao;
 
-public class CriarContaUsuarioFinalActivity extends AppCompatActivity {
+public class CriarContaMotoristaActivity extends AppCompatActivity {
 
     private EditText editNome;
     private EditText editSobreNome;
@@ -63,10 +62,10 @@ public class CriarContaUsuarioFinalActivity extends AppCompatActivity {
          senha = editSenha.getText().toString().trim();
 
         if (email.isEmpty() || senha.isEmpty() || celular.isEmpty() || nome.isEmpty()|| sobrenome.isEmpty()) {
-            Toast.makeText( CriarContaUsuarioFinalActivity.this, getString( R.string.campo_vazio ), Toast.LENGTH_SHORT ).show();
+            Toast.makeText( CriarContaMotoristaActivity.this, getString( R.string.campo_vazio ), Toast.LENGTH_SHORT ).show();
 
         }  else if (email.equals("Seu Email") || senha.equals( "senha" ) || nome.equals( "Nome" ) || sobrenome.equals( "Sobrenome" ) || celular.equals( "Telefone" )) {
-            Toast.makeText( CriarContaUsuarioFinalActivity.this, getString( R.string.campo_vazio ), Toast.LENGTH_SHORT ).show();
+            Toast.makeText( CriarContaMotoristaActivity.this, getString( R.string.campo_vazio ), Toast.LENGTH_SHORT ).show();
 
         } else {
             verificarEntradas();
@@ -99,7 +98,7 @@ public class CriarContaUsuarioFinalActivity extends AppCompatActivity {
                 parametros = "email=" + email +"&senha=" + senha +"&celular=" + celular +"&sobrenome=" + sobrenome +"&nome=" + nome;
                 new SolicitaDados().execute(url);
             }
-            else{ Toast.makeText(CriarContaUsuarioFinalActivity.this, getString(R.string.connection_failed), Toast.LENGTH_SHORT).show(); }
+            else{ Toast.makeText(CriarContaMotoristaActivity.this, getString(R.string.connection_failed), Toast.LENGTH_SHORT).show(); }
         }
     }
 
@@ -143,7 +142,7 @@ A classe interna a seguir conecta a internet e envia informações em segundo pl
                 finish();
             }
             else{
-                Toast.makeText(CriarContaUsuarioFinalActivity.this, getString(R.string.cadastration_failed), Toast.LENGTH_SHORT).show();
+                Toast.makeText(CriarContaMotoristaActivity.this, getString(R.string.cadastration_failed), Toast.LENGTH_SHORT).show();
                 // Falha no cadatros!! @TODO tratar erro, para exibir ao Usuário
             }
         }

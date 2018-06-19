@@ -1,9 +1,9 @@
-package com.inova.ufrpe.processos.carropipa.pessoa.dominio;
+package com.inova.ufrpe.processos.carropipa.motorista.dominio;
 
 import android.os.Parcel;
 import android.os.Parcelable;
 
-public class Pessoa implements Parcelable {
+public class Motorista implements Parcelable {
 
     private Long id;
     private String cpf;
@@ -108,16 +108,16 @@ public class Pessoa implements Parcelable {
         this.uf = parcel.readString();
     }
 
-    public static final Parcelable.Creator<Pessoa> CREATOR = new Parcelable.Creator<Pessoa>() {
+    public static final Creator<Motorista> CREATOR = new Creator<Motorista>() {
         @Override
-        public Pessoa createFromParcel(Parcel p) {
-            Pessoa eq = new Pessoa();
+        public Motorista createFromParcel(Parcel p) {
+            Motorista eq = new Motorista();
             eq.readFromParcel(p);
             return eq;
         }
         @Override
-        public Pessoa[] newArray(int size){
-            return new Pessoa[size];
+        public Motorista[] newArray(int size){
+            return new Motorista[size];
         }
     };
 }

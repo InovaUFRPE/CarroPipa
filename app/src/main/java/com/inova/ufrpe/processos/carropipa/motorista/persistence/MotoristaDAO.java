@@ -1,4 +1,4 @@
-package com.inova.ufrpe.processos.carropipa.pessoa.persistence;
+package com.inova.ufrpe.processos.carropipa.motorista.persistence;
 
 import android.database.Cursor;
 import android.os.AsyncTask;
@@ -12,7 +12,7 @@ import java.util.List;
 import static java.lang.Boolean.FALSE;
 import static java.lang.Boolean.TRUE;
 
-public class PessoaDAO {
+public class MotoristaDAO {
 
     String parametros;
     String url = "http://192.168.15.148:5000/cadastro/criar_perfil";

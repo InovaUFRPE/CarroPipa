@@ -1,4 +1,4 @@
-package com.inova.ufrpe.processos.carropipa.infraestrutura.ui;
+package com.inova.ufrpe.processos.carropipa.motorista.ui;
 
 import android.content.Context;
 import android.content.Intent;
@@ -16,9 +16,10 @@ import android.widget.Toast;
 
 import com.inova.ufrpe.processos.carropipa.R;
 import com.inova.ufrpe.processos.carropipa.infraestrutura.serverlayer.Conexao;
+import com.inova.ufrpe.processos.carropipa.infraestrutura.ui.M_MainActivity;
 import com.inova.ufrpe.processos.carropipa.infraestrutura.validadores.Validacao;
 
-public class   LoginActivity extends AppCompatActivity {
+public class LoginMotoristaActivity extends AppCompatActivity {
 
     private Button btn_logar;
     private EditText edt_login;
@@ -57,10 +58,10 @@ public class   LoginActivity extends AppCompatActivity {
                     if(emailUser.isEmpty() || senhaUser.isEmpty()){
                         edt_login.setError("CAMPO VAZIO");
                         edt_senha.setError( "CAMPO VAZIO" );
-                        Toast.makeText(LoginActivity.this, getString(R.string.campo_vazio), Toast.LENGTH_SHORT).show();
+                        Toast.makeText(LoginMotoristaActivity.this, getString(R.string.campo_vazio), Toast.LENGTH_SHORT).show();
 
                     } else if (!new Validacao().validarEmail(emailUser)) {
-                        Toast.makeText(LoginActivity.this, getString(R.string.campo_vazio), Toast.LENGTH_SHORT).show();
+                        Toast.makeText(LoginMotoristaActivity.this, getString(R.string.campo_vazio), Toast.LENGTH_SHORT).show();
 
                     } else {
                         //TODO IP para connected.
@@ -100,7 +101,7 @@ public class   LoginActivity extends AppCompatActivity {
 
             if(resultado[0].contains("login_ok")){
                 //exibir toast apenas para verificar os dados q chegam do servidor
-                Intent autentication = new Intent(LoginActivity.this,M_MainActivity.class);
+                Intent autentication = new Intent(LoginMotoristaActivity.this,M_MainActivity.class);
                 //autentication.putExtra("nome",resultado[1]);
                 //autentication.putExtra("snome",resultado[2]);
                 autentication.putExtra("email",resultado[1]);
@@ -108,7 +109,7 @@ public class   LoginActivity extends AppCompatActivity {
                 startActivity(autentication);
             }
             else {
-                Toast.makeText(LoginActivity.this, getString(R.string.userPass_failed), Toast.LENGTH_SHORT).show();
+                Toast.makeText(LoginMotoristaActivity.this, getString(R.string.userPass_failed), Toast.LENGTH_SHORT).show();
             }
         }
     }

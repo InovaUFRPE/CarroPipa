@@ -18,11 +18,16 @@ import com.inova.ufrpe.processos.carropipa.R;
 
 public class M_MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
 
+    private String user_email;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate( savedInstanceState );
         setContentView( R.layout.activity_m__main );
+        Intent autentication = getIntent();
+        user_email = autentication.getStringExtra("email");
+
         Toolbar toolbar = (Toolbar) findViewById( R.id.toolbar );
         setSupportActionBar( toolbar );
         // BOTÃO DA POSIÇÃO NO MAPA
@@ -93,6 +98,7 @@ public class M_MainActivity extends AppCompatActivity implements NavigationView.
 
         if (id == R.id.nav_perfil) {
             Intent perfilAct= new Intent(M_MainActivity.this,PerfilActivity.class);
+            perfilAct.putExtra("email",user_email);
             startActivity(perfilAct);
         } else if (id == R.id.nav_pedir) {
             Intent solicitarAct= new Intent(M_MainActivity.this,SolicitarActivity.class);

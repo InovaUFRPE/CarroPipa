@@ -1,11 +1,14 @@
 package com.inova.ufrpe.processos.carropipa.infraestrutura.ui;
 
 import android.Manifest;
+import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.database.Cursor;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
 import android.net.Uri;
 import android.provider.MediaStore;
 import android.support.design.widget.FloatingActionButton;
@@ -21,12 +24,14 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.Spinner;
+import android.widget.Toast;
 
 import com.inova.ufrpe.processos.carropipa.R;
 import com.inova.ufrpe.processos.carropipa.infraestrutura.hardware.ExternalStorage;
 import com.inova.ufrpe.processos.carropipa.pessoa.dominio.EnumStados;
 import com.inova.ufrpe.processos.carropipa.pessoa.dominio.EnumTipos;
 import com.inova.ufrpe.processos.carropipa.pessoa.dominio.Pessoa;
+import com.inova.ufrpe.processos.carropipa.pessoa.persistence.PessoaDAO;
 
 import java.io.File;
 import java.io.IOException;
@@ -53,6 +58,7 @@ public class PerfilActivity extends AppCompatActivity {
     private FloatingActionButton abrirGaleria;
     private ImageView imageUser;
     private Spinner pessoaTipo;
+    private String user_email;
 
 
     @Override
@@ -60,19 +66,20 @@ public class PerfilActivity extends AppCompatActivity {
         super.onCreate( savedInstanceState );
         setContentView( R.layout.activity_perfil );
 
-        cpf = findViewById(R.id.edt_cpf);
-        logradouro = findViewById(R.id.edt_logradouro);
-        complemento = findViewById(R.id.edt_complemento);
-        cidade = findViewById(R.id.edt_cidade);
-        bairro = findViewById(R.id.edt_bairro);
-        cep = findViewById(R.id.edt_cep);
+        Intent autentication = getIntent();
+        user_email = autentication.getStringExtra("email");
+
         limpar = findViewById(R.id.btn_limpar);
         enviar = findViewById(R.id.btn_enviar);
-        uf = findViewById(R.id.spn_uf);
-        pessoaTipo = findViewById(R.id.spn_tipo);
         tirarFoto = findViewById(R.id.fab_tirarFoto);
         abrirGaleria = findViewById(R.id.fab_abrirGaleria);
         imageUser = findViewById(R.id.img_user);
+
+        uf = findViewById(R.id.spn_uf);
+        //pessoa.setUf(uf.getSelectedItem().toString()); //ler o spinner
+        //Log.d("Estou Lendo:",pessoa.getUf());
+        pessoaTipo = findViewById(R.id.spn_tipo);
+
 
         //permissões para manipular arquivos:
 
@@ -101,17 +108,6 @@ public class PerfilActivity extends AppCompatActivity {
             }
         }
 
-
-
-        Pessoa pessoa = new Pessoa();
-
-        pessoa.setBairro(bairro.getText().toString());
-        pessoa.setCpf(bairro.getText().toString());
-        pessoa.setLogradouro(bairro.getText().toString());
-        pessoa.setComplemento(bairro.getText().toString());
-        pessoa.setCidade(bairro.getText().toString());
-        pessoa.setCep(bairro.getText().toString());
-        //pessoa.setBairro(bairro.getText().toString()); ler o spinner
 
         //Setar Spinners
         //Spiner Estados:
@@ -182,7 +178,51 @@ public class PerfilActivity extends AppCompatActivity {
         });
 
         //botão enviar:
+        enviar.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                salvarPerfil();
+            }
+        });
     }
+
+    /**
+     *Metodo salvarPerfil - Salva um perfil no banco
+     * @param : None
+     * @return : None
+     * @action : Le os campos do formulário, atribui a um objeto pessoa e salva esse objeto no banco
+     * Para tal faz uso do objeto PessoaDAO - que manipula as opeações no banco de dados
+     *
+     */
+    private void salvarPerfil() {
+        Pessoa pessoa = new Pessoa();
+        cpf = findViewById(R.id.edt_cpf);
+        pessoa.setCpf(cpf.getText().toString());
+        logradouro = findViewById(R.id.edt_logradouro);
+        pessoa.setLogradouro(logradouro.getText().toString());
+        complemento = findViewById(R.id.edt_complemento);
+        pessoa.setComplemento(complemento.getText().toString());
+        cidade = findViewById(R.id.edt_cidade);
+        pessoa.setCidade(cidade.getText().toString());
+        bairro = findViewById(R.id.edt_bairro);
+        pessoa.setBairro(bairro.getText().toString());
+        cep = findViewById(R.id.edt_cep);
+        pessoa.setCep(cep.getText().toString());
+
+        PessoaDAO pessoaDAO = new PessoaDAO();
+
+        ConnectivityManager cm =
+                (ConnectivityManager)getSystemService(Context.CONNECTIVITY_SERVICE);
+        //aqui pode gerar exception??
+        NetworkInfo activeNetwork = cm.getActiveNetworkInfo();
+        boolean isConnected = activeNetwork != null &&
+                activeNetwork.isConnectedOrConnecting();
+        if (isConnected){
+            pessoaDAO.salva(pessoa, user_email);
+        }else{
+            Toast.makeText(PerfilActivity.this, getString(R.string.connection_failed), Toast.LENGTH_SHORT).show(); }
+    }
+
 
     /**
      * Metodo abreCamera - Tira uma foto com a Camera do Dispositivo
