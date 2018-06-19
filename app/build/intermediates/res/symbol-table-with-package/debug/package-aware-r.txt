@@ -107,6 +107,11 @@ attr cameraZoom
 attr checkboxStyle
 attr checkedTextViewStyle
 attr circleCrop
+attr civ_border_color
+attr civ_border_overlay
+attr civ_border_width
+attr civ_circle_background_color
+attr civ_fill_color
 attr closeIcon
 attr closeItemLayout
 attr collapseContentDescription
@@ -908,10 +913,10 @@ id blocking
 id bottom
 id btn_criarconta
 id btn_entrar
+id btn_enviar
+id btn_limpar
 id btn_logar
-id button
 id button2
-id button3
 id button4
 id buttonPanel
 id cancel_action
@@ -946,7 +951,13 @@ id editSenha
 id editSobrenome
 id editTelefone
 id edit_query
+id edt_bairro
+id edt_cep
+id edt_cidade
+id edt_complemento
+id edt_cpf
 id edt_login
+id edt_logradouro
 id edt_senha
 id end
 id end_padder
@@ -956,6 +967,8 @@ id exitUntilCollapsed
 id expand_activities_button
 id expanded_menu
 id fab
+id fab_abrirGaleria
+id fab_tirarFoto
 id fill
 id fill_horizontal
 id fill_vertical
@@ -976,9 +989,9 @@ id imageView4
 id imageView5
 id imageView6
 id imageView7
-id imageView8
 id imageView9
 id imageViewPerfil
+id img_user
 id info
 id italic
 id item_touch_helper_previous_elevation
@@ -1032,7 +1045,6 @@ id scroll
 id scrollIndicatorDown
 id scrollIndicatorUp
 id scrollView
-id scrollView3
 id scrollable
 id search_badge
 id search_bar
@@ -1055,6 +1067,8 @@ id snackbar_text
 id snap
 id spacer
 id split_action_bar
+id spn_tipo
+id spn_uf
 id spread
 id spread_inside
 id src_atop
@@ -1073,23 +1087,7 @@ id text2
 id textSpacerNoButtons
 id textSpacerNoTitle
 id textView
-id textView10
-id textView11
-id textView12
-id textView13
-id textView14
-id textView15
-id textView16
-id textView17
-id textView18
 id textView2
-id textView3
-id textView4
-id textView5
-id textView6
-id textView7
-id textView8
-id textView9
 id text_input_password_toggle
 id textinput_counter
 id textinput_error
@@ -1241,6 +1239,8 @@ string app_title
 string appbar_scrolling_view_behavior
 string bottom_sheet_behavior
 string btn_entrar
+string btn_enviar
+string btn_limpar
 string cadastration_failed
 string campo_vazio
 string character_counter_pattern
@@ -1263,6 +1263,12 @@ string common_open_on_phone
 string common_signin_button_text
 string common_signin_button_text_long
 string connection_failed
+string edt_bairro
+string edt_cep
+string edt_cidade
+string edt_complemento
+string edt_cpf
+string edt_lograduro
 string email_usuario
 string google_maps_key
 string nav_header_desc
@@ -1285,6 +1291,7 @@ string s6
 string s7
 string search_menu_title
 string status_bar_notification_info_overflow
+string take_a_picture
 string title_activity_home_maps
 string title_activity_m__main
 string title_activity_maps
@@ -1690,6 +1697,7 @@ styleable AppCompatTheme android_windowIsFloating android_windowAnimationStyle a
 styleable BottomNavigationView elevation itemBackground itemIconTint itemTextColor menu
 styleable BottomSheetBehavior_Layout behavior_hideable behavior_peekHeight behavior_skipCollapsed
 styleable ButtonBarLayout allowStacking
+styleable CircleImageView civ_border_color civ_border_overlay civ_border_width civ_circle_background_color civ_fill_color
 styleable CollapsingToolbarLayout collapsedTitleGravity collapsedTitleTextAppearance contentScrim expandedTitleGravity expandedTitleMargin expandedTitleMarginBottom expandedTitleMarginEnd expandedTitleMarginStart expandedTitleMarginTop expandedTitleTextAppearance scrimAnimationDuration scrimVisibleHeightTrigger statusBarScrim title titleEnabled toolbarId
 styleable CollapsingToolbarLayout_Layout layout_collapseMode layout_collapseParallaxMultiplier
 styleable ColorStateListItem android_color android_alpha alpha
@@ -1734,3 +1742,4 @@ styleable Toolbar android_gravity android_minHeight buttonGravity collapseConten
 styleable View android_theme android_focusable paddingEnd paddingStart theme
 styleable ViewBackgroundHelper android_background backgroundTint backgroundTintMode
 styleable ViewStubCompat android_id android_layout android_inflatedId
+xml providers_path
