@@ -16,18 +16,20 @@ import android.widget.Toast;
 import com.inova.ufrpe.processos.carropipa.R;
 import com.inova.ufrpe.processos.carropipa.infraestrutura.serverlayer.Conexao;
 
-public class CriarContaUsuarioFinalActivity extends AppCompatActivity {
+public class CadastroUsuarioActivity extends AppCompatActivity {
 
     private EditText editNome;
     private EditText editSobreNome;
     private EditText editEmail;
     private EditText editTelefone;
     private EditText editSenha;
+    
     private String nome;
     private String sobrenome;
     private String email;
     private String celular;
     private String senha;
+    
     private Button btn_criar;
     private String url = "";
     private String parametros = "";
@@ -47,75 +49,91 @@ public class CriarContaUsuarioFinalActivity extends AppCompatActivity {
         btn_criar.setOnClickListener( new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
                 verificarCampos();
-
             }
-        } );
-
+        });
     }
-    private void verificarCampos() {
 
+    private void verificarCampos() {
          nome = editNome.getText().toString().trim();
          sobrenome = editSobreNome.getText().toString().trim();
          celular = editTelefone.getText().toString().trim();
          email = editEmail.getText().toString().trim();
          senha = editSenha.getText().toString().trim();
-
-        if (email.isEmpty() || senha.isEmpty() || celular.isEmpty() || nome.isEmpty()|| sobrenome.isEmpty()) {
-            Toast.makeText( CriarContaUsuarioFinalActivity.this, getString( R.string.campo_vazio ), Toast.LENGTH_SHORT ).show();
-
-        }  else if (email.equals("Seu Email") || senha.equals( "senha" ) || nome.equals( "Nome" ) || sobrenome.equals( "Sobrenome" ) || celular.equals( "Telefone" )) {
-            Toast.makeText( CriarContaUsuarioFinalActivity.this, getString( R.string.campo_vazio ), Toast.LENGTH_SHORT ).show();
-
-        } else {
-            verificarEntradas();
-        }
+         boolean isValid = true;
+         if (nome.isEmpty()){
+             editNome.setError("Este campo não pode ser vazio");
+             isValid = false;
+         }
+         if (sobrenome.isEmpty()){
+            editSobreNome.setError("Este campo não pode ser vazio");
+             isValid = false;
+         }
+         if (celular.isEmpty()){
+            editTelefone.setError("Este campo não pode ser vazio");
+             isValid = false;
+         }
+         if (email.isEmpty()){
+            editEmail.setError("Este campo não pode ser vazio");
+             isValid = false;
+         }
+         if (senha.isEmpty()){
+            editSenha.setError("Este campo não pode ser vazio");
+            isValid = false;
+         }
+         if (isValid){
+             verificarEntradas();
+         }
     }
 
-    private void verificarEntradas(){
+    private void verificarEntradas(){ 
+        boolean isValid = true;
         if (!Patterns.EMAIL_ADDRESS.matcher(email).matches()) {
             editEmail.setError("Email inválido");
-        } else if (validarNome( nome )) {
+            isValid = false;
+        } 
+        if (validarNome( nome )) {
             editNome.setError("Nome inválido");
-
-        } else if (validarSobrenome( sobrenome )) {
+            isValid = false;
+        } 
+        if (validarSobrenome( sobrenome )) {
             editSobreNome.setError("sobrenome inválido");
-
-        } else if (validarNumero( celular )) {
+            isValid = false;
+        } 
+        if (validarNumero( celular )) {
             editTelefone.setError("Telefone inválido");
-
-        } else {
-            // Criar com API
-            ConnectivityManager cm =
-                    (ConnectivityManager)getSystemService(Context.CONNECTIVITY_SERVICE);
+            isValid = false;
+        } 
+        if(isValid){
+            //Criar com API
+            ConnectivityManager cm = (ConnectivityManager)getSystemService(Context.CONNECTIVITY_SERVICE);
             //aqui pode gerar exception??
             NetworkInfo activeNetwork = cm.getActiveNetworkInfo();
-            boolean isConnected = activeNetwork != null &&
-                    activeNetwork.isConnectedOrConnecting();
+            boolean isConnected = activeNetwork != null && activeNetwork.isConnectedOrConnecting();
             if (isConnected){
-
-                url = "http://192.168.15.148:5000/cadastro/cadastrar";
+                Toast.makeText(CadastroUsuarioActivity.this, getString(R.string.connection_sucess), Toast.LENGTH_SHORT).show();
+                startActivity(new Intent(CadastroUsuarioActivity.this,LoginActivity.class));
+                finish();
+                /*url = "http://192.168.15.148:5000/cadastro/cadastrar";
                 parametros = "email=" + email +"&senha=" + senha +"&celular=" + celular +"&sobrenome=" + sobrenome +"&nome=" + nome;
-                new SolicitaDados().execute(url);
+                new SolicitaDados().execute(url);*/
             }
-            else{ Toast.makeText(CriarContaUsuarioFinalActivity.this, getString(R.string.connection_failed), Toast.LENGTH_SHORT).show(); }
+            else{ 
+                Toast.makeText(CadastroUsuarioActivity.this, getString(R.string.connection_failed), Toast.LENGTH_SHORT).show();
+            }
         }
     }
 
     public Boolean validarNome(String nome) {
-
         return nome.matches("^(?![ ])(?!.*[ ]{2})((?:e|da|do|das|dos|de|d'|D'|la|las|el|los)" +
                 "\\s*?|(?:[A-Z][^\\s]*\\s*?)(?!.*[ ]$))+$");
     }
 
     public Boolean validarSobrenome(String sobreNome) {
-
         return (sobreNome.matches("^(?![ ])(?!.*[ ]{2})((?:e|da|do|das|dos|de|d'|D'|la|las|el|los)" +
                 "\\s*?|(?:[A-Z][^\\s]*\\s*?)(?!.*[ ]$))+$"));
     }
     public Boolean validarNumero(String numero) {
-
         return numero.matches("^[0-9]{0,5}+$");
     }
 
@@ -143,7 +161,7 @@ A classe interna a seguir conecta a internet e envia informações em segundo pl
                 finish();
             }
             else{
-                Toast.makeText(CriarContaUsuarioFinalActivity.this, getString(R.string.cadastration_failed), Toast.LENGTH_SHORT).show();
+                Toast.makeText(CadastroUsuarioActivity.this, getString(R.string.cadastration_failed), Toast.LENGTH_SHORT).show();
                 // Falha no cadatros!! @TODO tratar erro, para exibir ao Usuário
             }
         }

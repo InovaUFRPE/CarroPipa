@@ -931,7 +931,6 @@ id clip_vertical
 id collapseActionView
 id container
 id contentPanel
-id context_frame
 id coordinator
 id custom
 id customPanel
@@ -1003,7 +1002,6 @@ id line3
 id listMode
 id list_item
 id map
-id map_home
 id masked
 id media_actions
 id message
@@ -1155,15 +1153,12 @@ layout abc_select_dialog_material
 layout abc_tooltip
 layout activity_apresent
 layout activity_criar_conta
-layout activity_home
-layout activity_home_maps
 layout activity_login
-layout activity_m__main
 layout activity_maps
 layout activity_perfil
 layout activity_solicitar
 layout app_bar_m__main
-layout content_m__main
+layout content_maps
 layout design_bottom_navigation_item
 layout design_bottom_sheet_dialog
 layout design_layout_snackbar
@@ -1242,6 +1237,7 @@ string btn_entrar
 string btn_enviar
 string btn_limpar
 string cadastration_failed
+string campo_invalido
 string campo_vazio
 string character_counter_pattern
 string common_google_play_services_enable_button
@@ -1263,6 +1259,7 @@ string common_open_on_phone
 string common_signin_button_text
 string common_signin_button_text_long
 string connection_failed
+string connection_sucess
 string edt_bairro
 string edt_cep
 string edt_cidade
@@ -1274,6 +1271,8 @@ string google_maps_key
 string nav_header_desc
 string nav_header_subtitle
 string nav_header_title
+string navigationDrawerClose
+string navigationDrawerOpen
 string navigation_drawer_close
 string navigation_drawer_open
 string nome_usuario

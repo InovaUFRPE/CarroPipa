@@ -1,10 +1,10 @@
 {
     "logs": [
         {
-            "outputFile": "D:\\BACKUP FELIPE\\AndroidStudioProjects\\CarroPipa\\app\\build\\intermediates\\incremental\\mergeDebugResources\\merged.dir\\values-km\\values-km.xml",
+            "outputFile": "/home/antonio/CarroPipa/app/build/intermediates/incremental/mergeDebugResources/merged.dir/values-km/values-km.xml",
             "map": [
                 {
-                    "source": "C:\\Users\\Felipe\\.gradle\\caches\\transforms-1\\files-1.1\\play-services-basement-15.0.1.aar\\9957110dca40581314330d32e4e4adab\\res\\values-km\\values.xml",
+                    "source": "/home/antonio/.gradle/caches/transforms-1/files-1.1/play-services-basement-15.0.1.aar/e15067464524475dd547e0e9ee0d210f/res/values-km/values.xml",
                     "from": {
                         "startLines": "4",
                         "startColumns": "0",
@@ -21,7 +21,7 @@
                     }
                 },
                 {
-                    "source": "C:\\Users\\Felipe\\.gradle\\caches\\transforms-1\\files-1.1\\support-compat-27.1.1.aar\\d9b33f8e8020dada9c868fba9287eb20\\res\\values-km\\values-km.xml",
+                    "source": "/home/antonio/.gradle/caches/transforms-1/files-1.1/support-compat-27.1.1.aar/757953a66c7e98671cc14d5ce8bea902/res/values-km/values-km.xml",
                     "from": {
                         "startLines": "2",
                         "startColumns": "4",
@@ -38,24 +38,7 @@
                     }
                 },
                 {
-                    "source": "C:\\Users\\Felipe\\.gradle\\caches\\transforms-1\\files-1.1\\play-services-ads-15.0.1.aar\\ce8f5dab29994d39aadbda095394a1ec\\res\\values-km\\values.xml",
-                    "from": {
-                        "startLines": "4,5,6,7,8,9,10",
-                        "startColumns": "0,0,0,0,0,0,0",
-                        "startOffsets": "197,269,397,462,526,619,744",
-                        "endColumns": "71,127,64,63,92,124,76",
-                        "endOffsets": "268,396,461,525,618,743,820"
-                    },
-                    "to": {
-                        "startLines": "37,38,39,40,41,42,43",
-                        "startColumns": "4,4,4,4,4,4,4",
-                        "startOffsets": "4559,4635,4767,4836,4904,5001,5130",
-                        "endColumns": "75,131,68,67,96,128,80",
-                        "endOffsets": "4630,4762,4831,4899,4996,5125,5206"
-                    }
-                },
-                {
-                    "source": "C:\\Users\\Felipe\\.gradle\\caches\\transforms-1\\files-1.1\\appcompat-v7-27.1.1.aar\\ecd008050f530f076b82197f07643dde\\res\\values-km\\values-km.xml",
+                    "source": "/home/antonio/.gradle/caches/transforms-1/files-1.1/appcompat-v7-27.1.1.aar/403f27c488dd6a10c5d2b936e24c5295/res/values-km/values-km.xml",
                     "from": {
                         "startLines": "2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19",
                         "startColumns": "4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4",
@@ -72,7 +55,24 @@
                     }
                 },
                 {
-                    "source": "C:\\Users\\Felipe\\.gradle\\caches\\transforms-1\\files-1.1\\play-services-base-15.0.1.aar\\9256dd61e3309f43626209390dba54f8\\res\\values-km\\values.xml",
+                    "source": "/home/antonio/.gradle/caches/transforms-1/files-1.1/play-services-ads-15.0.1.aar/4e7c5a7e6bf8163d58a9d5ee2b943b05/res/values-km/values.xml",
+                    "from": {
+                        "startLines": "4,5,6,7,8,9,10",
+                        "startColumns": "0,0,0,0,0,0,0",
+                        "startOffsets": "197,269,397,462,526,619,744",
+                        "endColumns": "71,127,64,63,92,124,76",
+                        "endOffsets": "268,396,461,525,618,743,820"
+                    },
+                    "to": {
+                        "startLines": "37,38,39,40,41,42,43",
+                        "startColumns": "4,4,4,4,4,4,4",
+                        "startOffsets": "4559,4635,4767,4836,4904,5001,5130",
+                        "endColumns": "75,131,68,67,96,128,80",
+                        "endOffsets": "4630,4762,4831,4899,4996,5125,5206"
+                    }
+                },
+                {
+                    "source": "/home/antonio/.gradle/caches/transforms-1/files-1.1/play-services-base-15.0.1.aar/3e85d2d4e5e354364955197541aa94a9/res/values-km/values.xml",
                     "from": {
                         "startLines": "4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20",
                         "startColumns": "0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0",

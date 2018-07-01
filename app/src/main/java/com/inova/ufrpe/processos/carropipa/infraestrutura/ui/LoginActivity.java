@@ -6,9 +6,7 @@ import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.os.AsyncTask;
 import android.os.Bundle;
-import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -39,42 +37,41 @@ public class   LoginActivity extends AppCompatActivity {
         btn_logar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                //Intent autentication = new Intent(LoginActivity.this,M_MainActivity.class);
-                //startActivity(autentication);
-                //snippet para verificar o status da conexão
-                ConnectivityManager cm =
-                        (ConnectivityManager)getSystemService(Context.CONNECTIVITY_SERVICE);
+                ConnectivityManager cm = (ConnectivityManager)getSystemService(Context.CONNECTIVITY_SERVICE);
                 //aqui pode gerar exception??
                 NetworkInfo activeNetwork = cm.getActiveNetworkInfo();
-                boolean isConnected = activeNetwork != null &&
-                        activeNetwork.isConnectedOrConnecting();
-                //isConnected = false;
+                boolean isConnected = activeNetwork != null && activeNetwork.isConnectedOrConnecting();
                 if (isConnected){
-
-                    String emailUser = edt_login.getText().toString();
-                    String senhaUser = edt_senha.getText().toString();
-
-                    if(emailUser.isEmpty() || senhaUser.isEmpty()){
-                        edt_login.setError("CAMPO VAZIO");
-                        edt_senha.setError( "CAMPO VAZIO" );
-                        Toast.makeText(LoginActivity.this, getString(R.string.campo_vazio), Toast.LENGTH_SHORT).show();
-
-                    } else if (!new Validacao().validarEmail(emailUser)) {
-                        Toast.makeText(LoginActivity.this, getString(R.string.campo_vazio), Toast.LENGTH_SHORT).show();
-
-                    } else {
-                        //TODO IP para connected.
-                        url = "http://192.168.15.148:5000/login/logar";
-                        parametros = "email=" + emailUser +"&senha=" + senhaUser;
-                        new SolicitaDados().execute(url);
-                    }
+                    validarCampos();
                 }
                 else{
-                    Snackbar.make(v, R.string.connection_failed, Snackbar.LENGTH_LONG ).show();
-                   // Toast.makeText(LoginActivity.this, getString(R.string.connection_failed), Toast.LENGTH_SHORT).show();
+                    //Snackbar.make(v, R.string.connection_failed, Snackbar.LENGTH_LONG ).show();
+                    Toast.makeText(LoginActivity.this, getString(R.string.connection_failed), Toast.LENGTH_SHORT).show();
                 }
             }
         });
+    }
+
+    public void validarCampos(){
+        String emailUser = edt_login.getText().toString();
+        String senhaUser = edt_senha.getText().toString();
+        boolean isValid = true;
+        if(emailUser.isEmpty() || !new Validacao().validarEmail(emailUser)){
+            edt_login.setError("Informação invalida");
+            isValid = false;
+        }
+        if(senhaUser.isEmpty()){
+            edt_senha.setError("Este campo não pode ser vazio");
+            isValid = false;
+        }
+        if (isValid){
+            Toast.makeText(this, "logado", Toast.LENGTH_SHORT).show();
+            startActivity(new Intent(LoginActivity.this,MapsActivity.class));
+            finish();
+            /*url = "http://192.168.15.148:5000/login/logar";
+            parametros = "email=" + emailUser +"&senha=" + senhaUser;
+            new SolicitaDados().execute(url);*/
+        }
     }
 
     /*
@@ -96,11 +93,11 @@ public class   LoginActivity extends AppCompatActivity {
             //Criado para tratar a nova String vinda do Servidor;
 
             String[] resultado = results.split(",");
-            Log.d("OLHO NO LANCE!",resultado[1]);
+
 
             if(resultado[0].contains("login_ok")){
                 //exibir toast apenas para verificar os dados q chegam do servidor
-                Intent autentication = new Intent(LoginActivity.this,M_MainActivity.class);
+                Intent autentication = new Intent(LoginActivity.this,MapsActivity.class);
                 //autentication.putExtra("nome",resultado[1]);
                 //autentication.putExtra("snome",resultado[2]);
                 autentication.putExtra("email",resultado[1]);

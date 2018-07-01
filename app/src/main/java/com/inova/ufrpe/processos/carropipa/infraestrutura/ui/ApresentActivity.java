@@ -24,12 +24,14 @@ public class ApresentActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 startActivity(new Intent(ApresentActivity.this,LoginActivity.class));
+                finish();
             }
         } );
         btn_Criar.setOnClickListener( new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(ApresentActivity.this,CriarContaUsuarioFinalActivity.class));
+                startActivity(new Intent(ApresentActivity.this,CadastroUsuarioActivity.class));
+                finish();
 
             }
         } );

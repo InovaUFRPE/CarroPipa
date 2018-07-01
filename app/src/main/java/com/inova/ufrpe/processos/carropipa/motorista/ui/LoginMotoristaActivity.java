@@ -16,7 +16,7 @@ import android.widget.Toast;
 
 import com.inova.ufrpe.processos.carropipa.R;
 import com.inova.ufrpe.processos.carropipa.infraestrutura.serverlayer.Conexao;
-import com.inova.ufrpe.processos.carropipa.infraestrutura.ui.M_MainActivity;
+import com.inova.ufrpe.processos.carropipa.infraestrutura.ui.MapsActivity;
 import com.inova.ufrpe.processos.carropipa.infraestrutura.validadores.Validacao;
 
 public class LoginMotoristaActivity extends AppCompatActivity {
@@ -40,7 +40,7 @@ public class LoginMotoristaActivity extends AppCompatActivity {
         btn_logar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                //Intent autentication = new Intent(LoginActivity.this,M_MainActivity.class);
+                //Intent autentication = new Intent(LoginActivity.this,MapsActivity.class);
                 //startActivity(autentication);
                 //snippet para verificar o status da conexão
                 ConnectivityManager cm =
@@ -101,7 +101,7 @@ public class LoginMotoristaActivity extends AppCompatActivity {
 
             if(resultado[0].contains("login_ok")){
                 //exibir toast apenas para verificar os dados q chegam do servidor
-                Intent autentication = new Intent(LoginMotoristaActivity.this,M_MainActivity.class);
+                Intent autentication = new Intent(LoginMotoristaActivity.this,MapsActivity.class);
                 //autentication.putExtra("nome",resultado[1]);
                 //autentication.putExtra("snome",resultado[2]);
                 autentication.putExtra("email",resultado[1]);
